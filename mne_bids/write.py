@@ -18,7 +18,7 @@ from datetime import datetime, timezone, timedelta
 import shutil
 from collections import defaultdict, OrderedDict
 
-from pkg_resources import parse_version
+from packaging import version
 
 import numpy as np
 from scipy import linalg
@@ -891,7 +891,7 @@ def _sidecar_json(
     system, _ = _get_meg_system(raw.info)
     chpi = None
     hpi_freqs = []
-    if datatype == "meg" and parse_version(mne.__version__) > parse_version("0.23"):
+    if datatype == "meg" and version.parse(mne.__version__) > version.parse("0.23"):
         # We need to handle different data formats differently
         if system == "CTF_275":
             try:
